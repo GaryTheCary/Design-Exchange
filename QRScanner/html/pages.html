@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" type="text/css" href="/_assets/css/jqm-demos.css">
+        <link rel="stylesheet" type="text/css" href="/generated/jquery.mobile.flatui.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/listview-grid.css">
+        <link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.4.5.min.css">
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.mobile-1.4.5.min.js"></script>
+        
+        <style>
+            /* Adjust the width of the left reveal menu. */
+            #demo-page #left-panel.ui-panel {
+                width: 15em;
+            }
+            #demo-page #left-panel.ui-panel-closed {
+                width: 0;
+            }
+            #demo-page .ui-panel-page-content-position-left,
+            .ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+                left: 15em;
+                right: -15em;}
+            #demo-page .ui-panel-animate.ui-panel-page-content-position-left.ui-panel-page-content-display-reveal {
+                left: 0;
+                right: 0;
+                -webkit-transform: translate3d(15em,0,0);
+                -moz-transform: translate3d(15em,0,0);
+                transform: translate3d(15em,0,0);}
+            /* Listview with collapsible list items. */
+            .ui-listview > li .ui-collapsible-heading {
+                margin: 0;
+            }
+            .ui-collapsible.ui-li-static {
+                padding: 0;
+                border: none !important;
+            }
+            .ui-collapsible + .ui-collapsible > .ui-collapsible-heading > .ui-btn {
+                border-top: none !important;
+            }
+            /* Nested list button colors */
+            .ui-listview .ui-listview .ui-btn {
+                background: #fff;}
+            .ui-listview .ui-listview .ui-btn:hover {
+                background: #f5f5f5;
+            }
+            .ui-listview .ui-listview .ui-btn:active {
+                background: #f1f1f1;
+            }
+            /* Reveal panel shadow on top of the listview menu (only to be used if you don't use fixed toolbars) */
+            #demo-page .ui-panel-display-reveal {
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+            #demo-page .ui-panel-page-content-position-left {
+                -webkit-box-shadow: -5px 0px 5px rgba(0,0,0,.15);
+                -moz-box-shadow: -5px 0px 5px rgba(0,0,0,.15);
+                box-shadow: -5px 0px 5px rgba(0,0,0,.15);
+            }
+            /* Setting a custom background image. */
+            #demo-page.ui-page-theme-a,
+            #demo-page .ui-panel-wrapper {
+                background-color: #fff;
+                background-image: url("/_assets/img/bg-pattern.png");
+                background-repeat: repeat-x;
+                background-position: left bottom;}
+            /* Styling of the page contents */
+            .article p {
+                margin: 0 0 1em;
+                line-height: 1.5;}
+            .article p img {
+                max-width: 100%;
+            }
+            .article p:first-child {
+                text-align: center;
+            }
+            .article small {
+                display: block;
+                font-size: 75%;
+                color: #c0c0c0;}
+            .article p:last-child {
+                text-align: right;
+            }
+            .article a.ui-btn {
+                margin-right: 2em;
+            }
+            @media all and (min-width:769px) {
+                .article {
+                    max-width: 994px;
+                    margin: 0 auto;
+                    padding-top: 4em;
+                    -webkit-column-count: 2;
+                    -moz-column-count: 2;
+                    column-count: 2;
+                    -webkit-column-gap: 2em;
+                    -moz-column-gap: 2em;
+                    column-gap: 2em;
+                }
+                .article a.ui-btn {
+                    -webkit-transform: translate3d(0,0,0);
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div data-role="page" id="one">
+            
+            <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
+            
+            <div data-role="header">
+                <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+                <h1>Exhibition Items</h1>
+                <a data-iconpos="notext" href="#panel" data-role="button" data-icon="custom"></a>
+            </div>
+            <div data-role="content" role="main">
+                <div data-role="collapsibleset" data-theme="a" data-content-theme="b">
+                    <div data-role="collapsible" data-collapsed-icon="gear" data-expanded-icon="check" data-collapsed="false">
+                        <h3>Section One</h3>
+                        <div role="main" class="ui-content">
+                            <ul data-role="listview" data-inset="true">
+                                <li><a href="#demo-page">
+                                    <img src="/_assets/img/apple.png" class="ui-li-thumb">
+                                    <h2>iOS 6.1</h2>
+                                    <p>Apple released iOS 6.1</p>
+                                    <p class="ui-li-aside">iOS</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/blackberry_10.png" class="ui-li-thumb">
+                                    <h2>BlackBerry 10</h2>
+                                    <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+                                    <p class="ui-li-aside">BlackBerry</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/lumia_800.png" class="ui-li-thumb">
+                                    <h2>WP 7.8</h2>
+                                    <p>Nokia rolls out WP 7.8 to Lumia 800</p>
+                                    <p class="ui-li-aside">Windows Phone</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/galaxy_express.png" class="ui-li-thumb">
+                                    <h2>Galaxy</h2>
+                                    <p>New Samsung Galaxy Express</p>
+                                    <p class="ui-li-aside">Samsung</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/nexus_7.png" class="ui-li-thumb">
+                                    <h2>Nexus 7</h2>
+                                    <p>Rumours about new full HD Nexus 7</p>
+                                    <p class="ui-li-aside">Android</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/firefox_os.png" class="ui-li-thumb">
+                                    <h2>Firefox OS</h2>
+                                    <p>ZTE to launch Firefox OS smartphone at MWC</p>
+                                    <p class="ui-li-aside">Firefox</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/tizen.png" class="ui-li-thumb">
+                                    <h2>Tizen</h2>
+                                    <p>First Samsung phones with Tizen can be expected in 2013</p>
+                                    <p class="ui-li-aside">Tizen</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <h2>Symbian</h2>
+                                    <p>Nokia confirms the end of Symbian</p>
+                                    <p class="ui-li-aside">Symbian</p>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                <div data-role="collapsible" data-collapased-icon="gear" data-expanded-icon="check">
+                    <h3>Section Two</h3>
+                    
+                        <div role="main" class="ui-content">
+                            <ul data-role="listview" data-inset="true">
+                                <li><a href="#">
+                                    <img src="/_assets/img/apple.png" class="ui-li-thumb">
+                                    <h2>iOS 6.1</h2>
+                                    <p>Apple released iOS 6.1</p>
+                                    <p class="ui-li-aside">iOS</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/blackberry_10.png" class="ui-li-thumb">
+                                    <h2>BlackBerry 10</h2>
+                                    <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+                                    <p class="ui-li-aside">BlackBerry</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/lumia_800.png" class="ui-li-thumb">
+                                    <h2>WP 7.8</h2>
+                                    <p>Nokia rolls out WP 7.8 to Lumia 800</p>
+                                    <p class="ui-li-aside">Windows Phone</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/galaxy_express.png" class="ui-li-thumb">
+                                    <h2>Galaxy</h2>
+                                    <p>New Samsung Galaxy Express</p>
+                                    <p class="ui-li-aside">Samsung</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/nexus_7.png" class="ui-li-thumb">
+                                    <h2>Nexus 7</h2>
+                                    <p>Rumours about new full HD Nexus 7</p>
+                                    <p class="ui-li-aside">Android</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/firefox_os.png" class="ui-li-thumb">
+                                    <h2>Firefox OS</h2>
+                                    <p>ZTE to launch Firefox OS smartphone at MWC</p>
+                                    <p class="ui-li-aside">Firefox</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/tizen.png" class="ui-li-thumb">
+                                    <h2>Tizen</h2>
+                                    <p>First Samsung phones with Tizen can be expected in 2013</p>
+                                    <p class="ui-li-aside">Tizen</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <h2>Symbian</h2>
+                                    <p>Nokia confirms the end of Symbian</p>
+                                    <p class="ui-li-aside">Symbian</p>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                <div data-role="collapsible" data-collapsed-icon="gear" data-expanded-icon="check">
+                    <h3>Section Three</h3>
+                        <div role="main" class="ui-content">
+                            <ul data-role="listview" data-inset="true">
+                                <li><a href="#">
+                                    <img src="/_assets/img/apple.png" class="ui-li-thumb">
+                                    <h2>iOS 6.1</h2>
+                                    <p>Apple released iOS 6.1</p>
+                                    <p class="ui-li-aside">iOS</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/blackberry_10.png" class="ui-li-thumb">
+                                    <h2>BlackBerry 10</h2>
+                                    <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+                                    <p class="ui-li-aside">BlackBerry</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/lumia_800.png" class="ui-li-thumb">
+                                    <h2>WP 7.8</h2>
+                                    <p>Nokia rolls out WP 7.8 to Lumia 800</p>
+                                    <p class="ui-li-aside">Windows Phone</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/galaxy_express.png" class="ui-li-thumb">
+                                    <h2>Galaxy</h2>
+                                    <p>New Samsung Galaxy Express</p>
+                                    <p class="ui-li-aside">Samsung</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/nexus_7.png" class="ui-li-thumb">
+                                    <h2>Nexus 7</h2>
+                                    <p>Rumours about new full HD Nexus 7</p>
+                                    <p class="ui-li-aside">Android</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/firefox_os.png" class="ui-li-thumb">
+                                    <h2>Firefox OS</h2>
+                                    <p>ZTE to launch Firefox OS smartphone at MWC</p>
+                                    <p class="ui-li-aside">Firefox</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/tizen.png" class="ui-li-thumb">
+                                    <h2>Tizen</h2>
+                                    <p>First Samsung phones with Tizen can be expected in 2013</p>
+                                    <p class="ui-li-aside">Tizen</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <h2>Symbian</h2>
+                                    <p>Nokia confirms the end of Symbian</p>
+                                    <p class="ui-li-aside">Symbian</p>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                <div data-role="collapsible" data-collapsed-icon="gear" data-expanded-icon="check">
+                    <h3>Section Four</h3>
+                         <div role="main" class="ui-content">
+                            <ul data-role="listview" data-inset="true">
+                                <li><a href="#">
+                                    <img src="/_assets/img/apple.png" class="ui-li-thumb">
+                                    <h2>iOS 6.1</h2>
+                                    <p>Apple released iOS 6.1</p>
+                                    <p class="ui-li-aside">iOS</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/blackberry_10.png" class="ui-li-thumb">
+                                    <h2>BlackBerry 10</h2>
+                                    <p>BlackBerry launched the Z10 and Q10 with the new BB10 OS</p>
+                                    <p class="ui-li-aside">BlackBerry</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/lumia_800.png" class="ui-li-thumb">
+                                    <h2>WP 7.8</h2>
+                                    <p>Nokia rolls out WP 7.8 to Lumia 800</p>
+                                    <p class="ui-li-aside">Windows Phone</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/galaxy_express.png" class="ui-li-thumb">
+                                    <h2>Galaxy</h2>
+                                    <p>New Samsung Galaxy Express</p>
+                                    <p class="ui-li-aside">Samsung</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/nexus_7.png" class="ui-li-thumb">
+                                    <h2>Nexus 7</h2>
+                                    <p>Rumours about new full HD Nexus 7</p>
+                                    <p class="ui-li-aside">Android</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/firefox_os.png" class="ui-li-thumb">
+                                    <h2>Firefox OS</h2>
+                                    <p>ZTE to launch Firefox OS smartphone at MWC</p>
+                                    <p class="ui-li-aside">Firefox</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <img src="/_assets/img/tizen.png" class="ui-li-thumb">
+                                    <h2>Tizen</h2>
+                                    <p>First Samsung phones with Tizen can be expected in 2013</p>
+                                    <p class="ui-li-aside">Tizen</p>
+                                    </a></li>
+                                <li><a href="#">
+                                    <h2>Symbian</h2>
+                                    <p>Nokia confirms the end of Symbian</p>
+                                    <p class="ui-li-aside">Symbian</p>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                
+                </div>
+                
+            </div>
+        </div>
+        <div data-role="page" id="demo-page" data-url="demo-page">
+            <div data-role="header">
+                <h1>One</h1>
+                <a href="#left-panel" data-icon="back" data-iconpos="notext" data-shadow="false" data-iconshadow="false">Menu</a>
+            </div>
+            
+            <div role="main" class="ui-content">
+                <div class="article">
+                    <p><img src="/_assets/img/bike.jpg" alt="lalala"></p>
+                    <h2>LaLaLa</h2>
+                    <p>Prices shown are round-trip, including taxes and carrier-imposed fees. A portion of all travel booked on American Airlines may be on US Airways, Inc., or American Eagle® service. American Eagle service is operated by Compass Airlines, LLC, Envoy Air Inc., ExpressJet Airlines, Inc., Mesa Airlines, Inc., Republic Airline Inc., SkyWest Airlines, Inc., or Trans States Airlines, LLC.</p>
+                    <p><small>source: lalala</small></p>
+                    <p><a href="#right-panel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini">share</a></p>
+                </div>
+            </div>
+            
+            <div data-role="panel" id="left-panel">
+                <ul data-role="listview">
+                    <li data-icon="delete"><a href="#" data-rel="close">close</a></li>
+                    <li data-icon="back"><a href="#demo-intro" data-rel="back">-_-</a></li>
+                    <li data-role=list-divider>categories</li>
+                    <li data-role="collapsible" data-inet="false" data-iconpos="right">
+                        <h3>Wulala</h3>
+                    </li>
+                </ul>
+            </div> 
+            
+         </div>
+    </body>
+</html>
